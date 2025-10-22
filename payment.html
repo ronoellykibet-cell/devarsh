@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - luminous</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <h1>Luminous</h1>
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="payment.html">Payment</a>
+        <a href="help.html">Help & Feedback</a>
+    </nav>
+</header>
+    <h2>Available Payment Methods</h2>
+    <div class="container">
+        <div class="payment-logo" onclick="showPaymentForm('PayPal')"><img src="paypal.png" alt="PayPal"></div>
+        <div class="payment-logo" onclick="showPaymentForm('M-Pesa')"><img src="mpesa.png" alt="M-Pesa"></div>
+        <div class="payment-logo" onclick="showPaymentForm('Bitcoin')"><img src="bitcoin.png" alt="Bitcoin"></div>
+        <div class="payment-logo" onclick="showPaymentForm('Google Pay')"><img src="gpay.png" alt="Google Pay"></div>
+        <div class="payment-logo" onclick="showPaymentForm('Apple Pay')"><img src="apple.png" alt="Apple Pay"></div>
+    </div>
+    
+    <div class="payment-form" id="paymentForm">
+        <h2>Payment for <span id="method"></span></h2>
+        <div class="price" id="price"></div>
+        <input type="number" placeholder="Amount to Pay" required>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <button class="button" type="submit" onclick="sendMoney()" >Proceed to Payment</button>
+    </div>
+    <footer>
+    &copy; 2025 Luminous. All rights reserved.
+</footer>
+ <script>
+        function sendMoney() {
+            // Simulating the action of sending money
+            alert("Please send money. A notification will be sent to your phone once the transaction is completed.");
+        }
+    
+    
+        function showPaymentForm(paymentMethod) {
+            const formContainer = document.getElementById('paymentForm');
+            formContainer.style.display = 'block';
+            document.getElementById('method').innerText = paymentMethod;
+
+            // Set a default price based on the payment method
+            const prices = {
+                'PayPal': '$20',
+                'M-Pesa': 'KSH 1500',
+                'Bitcoin': '$30',
+                'Google Pay': '$25',
+                'Apple Pay': '$35'
+            };
+            document.getElementById('price').innerText = prices[paymentMethod] + ' (Default Price)';
+        }
+    </script>
+</body>
+</html>

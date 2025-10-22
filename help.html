@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Feedback - Marketing Company</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Luminous</h1>
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="payment.html">Payment</a>
+        <a href="help.html">Help & Feedback</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Customer Support</h2>
+
+    <div class="support-option">
+        <h3>Call Back</h3>
+        <p>Request a callback from our support team.</p>
+        <button class="button" onclick="requestCallBack()">Request Call Back</button>
+    </div>
+
+    <div class="support-option">
+        <h3>Contacts</h3>
+        <p>Email: ellykibetr@gmail.com</p>
+        <p>Phone: 0704215210</p>
+    </div>
+
+    <div class="support-option">
+        <h3>Payment Queries</h3>
+        <p>Create a query regarding any payment issues.</p>
+        <button class="button" onclick="createPaymentQuery()">Create Query</button>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Luminous. All Rights Reserved.</p>
+</footer>
+
+<script>
+    
+    
+
+    function requestCallBack() {
+        // Functionality for requesting a callback
+        const phone = "0704215210";{
+        alert( ' requesting a call back');
+    }
+       
+    }
+
+    function createPaymentQuery() {
+        // Functionality for creating a payment query
+        const query = prompt("Please describe your payment issue:");
+        if (query) {
+     
+        } else {
+            alert("No query entered.");
+        }
+    }
+</script>
+
+</body>
+</html>

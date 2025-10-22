@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watches - Marketing Company</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Luminous</h1>
+
+</header>
+
+<div class="container">
+    <h2>Watches</h2>
+    <input type="text" id="search" placeholder="Search for watches..." onkeyup="searchProducts()">
+    
+    <div class="grid" id="product-list">
+    <!-- Watches -->
+    <div class="item">
+        <img src="leatherw.png" alt="Leather-strapped quartz watch" onclick="openModal('leatherw.png')">
+        <h3>Leather-strapped quartz watch</h3>
+        <p>Size: Medium</p>
+        <button class="button" onclick="addToCart('Leather-strapped quartz watch',3000)">Add to Cart(ksh 3000)</button>
+    </div>
+    <div class="item">
+        <img src="stainless.png" alt="Stainless steel automatic watch" onclick="openModal('stainless.png')">
+        <h3>Stainless steel automatic watch</h3>
+        <p>Size: Large</p>
+        <button class="button" onclick="addToCart('Stainless steel automatic watch',4000)">Add to Cart(ksh 4000)</button>
+    </div>
+    <div class="item">
+        <img src="rose.png" alt="Rose gold smartwatch" onclick="openModal('rose.png')">
+        <h3>Rose gold smartwatch</h3>
+        <p>Size: Medium</p>
+        <button class="button" onclick="addToCart('Rose gold smartwatch')">Add to Cart(ksh8200)</button>
+    </div>
+    <div class="item">
+        <img src="sporty.png" alt="Sporty digital watch" onclick="openModal('sporty.png')">
+        <h3>Sporty digital watch</h3>
+        <p>Size: Large</p>
+        <button class="button" onclick="addToCart('Sporty digital watch')">Add to Cart(ksh7500)</button>
+    </div>
+    <div class="item">
+        <img src="vintage.png" alt="Vintage-inspired mechanical watch" onclick="openModal('vintage.png')">
+        <h3>Vintage-inspired mechanical watch</h3>
+        <p>Size: Small</p>
+        <button class="button" onclick="addToCart('Vintage-inspired mechanical watch')">Add to Cart(ksh1900)</button>
+    </div>
+    <div class="item">
+        <img src="pearlfaced.png" alt="Pearl-faced quartz watch" onclick="openModal('pearlfaced.png')">
+        <h3>Pearl-faced quartz watch</h3>
+        <p>Size: Medium</p>
+        <button class="button" onclick="addToCart('Pearl-faced quartz watch')">Add to Cart(ksh24600)</button>
+    </div>
+    <div class="item">
+        <img src="military.png" alt="Military-style tactical watch" onclick="openModal('military.png')">
+        <h3>Military-style tactical watch</h3>
+        <p>Size: Large</p>
+        <button class="button" onclick="addToCart('Military-style tactical watch')">Add to Cart(ksh6200)</button>
+    </div>
+    <div class="item">
+        <img src="ceramic.png" alt="Ceramic-coated smartwatch" onclick="openModal('ceramic.png')">
+        <h3>Ceramic-coated smartwatch</h3>
+        <p>Size: Small</p>
+        <button class="button" onclick="addToCart('Ceramic-coated smartwatch')">Add to Cart(ksh7300)</button>
+    </div>
+    <div class="item">
+        <img src="classic.png" alt="Classic analog watch" onclick="openModal('classic.png')">
+        <h3>Classic analog watch</h3>
+        <p>Size: Medium</p>
+        <button class="button" onclick="addToCart('Classic analog watch')">Add to Cart(ksh5700)</button>
+    </div>
+    <div class="item">
+        <img src="fitness.png" alt="Fitness tracker watch" onclick="openModal('fitness.png')">
+        <h3>Fitness tracker watch</h3>
+        <p>Size: Large</p>
+        <button class="button" onclick="addToCart('Fitness tracker watch')">Add to Cart(ksh4400)</button>
+    </div>
+    </div>
+    <a href="dashboard.html" class="button">BACK</a>
+</div>
+
+<footer>
+    <p>&copy; 2025 Luminous. All Rights Reserved.</p>
+</footer>
+
+<script>
+    let cart = [];
+
+     function addToCart(item) {
+        alert(item + ' has been added to your cart!');
+    }
+
+    function searchProducts() {
+        const query = document.getElementById('search').value.toLowerCase();
+        const items = document.querySelectorAll('.grid .item');
+
+        items.forEach(item => {
+            const productName = item.querySelector('h3').textContent.toLowerCase();
+            item.style.display = productName.includes(query) ? 'block' : 'none';
+        });
+    }
+</script>
+<div class="modal" id="imageModal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+</div>
+
+<script>
+    function openModal(imgSrc) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = imgSrc;
+    }
+
+    function closeModal() {
+        document.getElementById("imageModal").style.display = "none";
+    }
+</script>
+
+</body>
+</html>

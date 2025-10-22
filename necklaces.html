@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Necklaces - Marketing Company</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Luminous</h1>
+    
+</header>
+
+<div class="container">
+    <h2>Necklaces</h2>
+        <input type="text" id="search" placeholder="Search for Necklaces..." onkeyup="searchProducts()">
+    <div class="grid" id="product-list">
+        <!-- Necklaces -->
+    <div class="item">
+        <img src="diamond.png" alt="Diamond-studded gold necklace" onclick="openModal('diamond.png')">
+        <h3>Diamond-studded gold necklace</h3>
+        <p>Size: Medium</p>
+        <button class="button" onclick="addToCart('Diamond-studded gold necklace')">Add to Cart(ksh17000)</button>
+    </div>
+    <div class="item">
+        <img src="pearlstrand.png" alt="Pearl strand necklace" onclick="openModal('pearlstrand.png')">
+        <h3>Pearl strand necklace</h3>
+        <p>Size: Large</p>
+        <button class="button" onclick="addToCart('Pearl strand necklace')">Add to Cart(ksh15400)</button>
+    </div>
+    <div class="item">
+        <img src="silverchain.png" alt="Silver chain necklace" onclick="openModal('silverchain.png')">
+        <h3>Silver chain necklace</h3>
+        <p> Size: Small</p>
+        <button class="button" onclick="addToCart('Silver chain necklace')">Add to Cart(ksh14300)</button>
+    </div>
+    <div class="item">
+        <img src="locket.png" alt="Locket necklace with photo" onclick="openModal('locket.png')">
+        <h3>Locket necklace with photo</h3>
+        <p> Size: Medium</p>
+        <button class="button" onclick="addToCart('Locket necklace with photo')">Add to Cart(ksh13500)</button>
+    </div>
+    <div class="item">
+        <img src="beadedtribal.png" alt="Beaded tribal necklace" onclick="openModal('beadedtribal.png')">
+        <h3>Beaded tribal necklace</h3>
+        <p>Size: Large</p>
+        <button class="button" onclick="addToCart('Beaded tribal necklace')">Add to Cart(ksh13900)</button>
+    </div>
+    <div class="item">
+        <img src="minimalistchain.png" alt="Minimalist chain necklace" onclick="openModal('minimalistchain.png')">
+        <h3>Minimalist chain necklace</h3>
+        <p> Size: Small</p>
+        <button class="button" onclick="addToCart('Minimalist chain necklace')">Add to Cart(ksh12600)</button>
+    </div>
+    <div class="item">
+        <img src="gemstonependant.png" alt="Gemstone pendant necklace" onclick="openModal('gemstonependant.png')">
+        <h3>Gemstone pendant necklace</h3>
+        <p>Size: Medium</p>
+        <button class="button" onclick="addToCart('Gemstone pendant necklace')">Add to Cart(ksh14000)</button>
+    </div>
+    <div class="item">
+        <img src="nameplate.png" alt="Nameplate necklace" onclick="openModal('nameplate.png')">
+        <h3>Nameplate necklace</h3>
+        <p> Size: Large</p>
+        <button class="button" onclick="addToCart('Nameplate necklace')">Add to Cart(ksh22000)</button>
+    </div>
+    <div class="item">
+        <img src="chainlayered.png" alt="Chain-layered necklace" onclick="openModal('chainlayered.png')">
+        <h3>Chain-layered necklace</h3>
+        <p>Size: Small</p>
+        <button class="button" onclick="addToCart('Chain-layered necklace')">Add to Cart(ksh13000)</button>
+    </div>
+    <div class="item">
+        <img src="feather.png" alt="Feather pendant" onclick="openModal('feather.png')">
+        <h3>Feather pendant</h3>
+        <p>Size: Medium</p>
+        <button class="button" onclick="addToCart('Feather pendant')">Add to Cart(ksh12000)</button>
+    </div>
+    </div>
+    <a href="dashboard.html" class="button">BACK</a>
+</div>
+
+<footer>
+    <p>&copy; 2025 Luminous. All Rights Reserved.</p>
+</footer>
+<script>
+    let cart = [];
+
+     function addToCart(item) {
+        alert(item + ' has been added to your cart!');
+    }
+
+    function searchProducts() {
+        const query = document.getElementById('search').value.toLowerCase();
+        const items = document.querySelectorAll('.grid .item');
+
+        items.forEach(item => {
+            const productName = item.querySelector('h3').textContent.toLowerCase();
+            item.style.display = productName.includes(query) ? 'block' : 'none';
+        });
+    }
+</script>
+<div class="modal" id="imageModal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+</div>
+
+<script>
+    function openModal(imgSrc) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = imgSrc;
+    }
+
+    function closeModal() {
+        document.getElementById("imageModal").style.display = "none";
+    }
+</script>
+
+</body>
+</html>

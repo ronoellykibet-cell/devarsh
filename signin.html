@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Marketing Company</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Luminous</h1>
+</header>
+
+
+<div class="container">
+    <h1>User Authentication</h1>
+    
+    <form id="loginForm" action="dashboard.html" method="get">
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        
+        <button type="submit" class="button">login</button>
+    </form>
+
+    <div class="link">
+        <p><a href="#" onclick="toggleForm('register')">Register</a> | <a href="#" onclick="toggleForm('forgot')">Forgot Password?</a></p>
+    </div>
+
+    <div id="registerForm" style="display:none;">
+        <h2>Register</h2>
+        <form action="dashboard.html" method="get">
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <input type="text" placeholder="Email" required>
+            
+            <input type="date" placeholder="Date of Birth" required>
+            
+            <button type="submit" class="button">Register</button>
+        </form>
+    </div>
+
+    <div id="forgotForm" style="display:none;">
+        <h2>Forgot Password</h2>
+        <form id="forgotPasswordForm" onsubmit="handleForgotPassword(event)">
+            <input type="text" placeholder="Enter your email" required>
+            <button type="submit" class="button">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function toggleForm(form) {
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const forgotForm = document.getElementById('forgotForm');
+        
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'none';
+        forgotForm.style.display = 'none';
+        
+        if (form === 'register') {
+            registerForm.style.display = 'block';
+        } else if (form === 'forgot') {
+            forgotForm.style.display = 'block';
+        } else {
+            loginForm.style.display = 'block';
+        }
+    }
+
+    function handleForgotPassword(event) {
+        event.preventDefault(); // Prevent the default form submission
+        alert('A password reset link has been sent to your email!');
+        // Optionally, you could also reset the form here
+        document.getElementById('forgotPasswordForm').reset();
+    }
+</script>
+<footer>
+    &copy; 2025 Luminous. All rights reserved.
+</footer>
+
+</body>
+</html>
