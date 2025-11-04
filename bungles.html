@@ -22,61 +22,61 @@
         <input type="text" id="search" placeholder="Search for Bangles..." onkeyup="searchProducts()">
     <div class="grid">
         <div class="item">
-        <img src="silvercuff.png" alt="silvercuff"  onclick="openModal('silvercuff.png')">
+        <img src="images/silvercuff.png" alt="silvercuff"  onclick="openModal('silvercuff.png')">
         <h3>Silver cuff bangle</h3>
         <p>Size: Medium</p>
         <button class="button" onclick="addToCart('Silver cuff bangle',2000)">Add to Cart(ksh 2000)</button>
     </div>
     <div class="item">
-        <img src="stonebangle.png" alt="stonebangle" onclick="openModal('stonebangle.png')">
+        <img src="images/stonebangle.png" alt="stonebangle" onclick="openModal('stonebangle.png')">
         <h3>Turquoise stone bangle</h3>
         <p> Size: Large</p>
         <button class="button" onclick="addToCart('Turquoise stone bangle',3500)">Add to Cart (ksh 3500)</button>
     </div>
     <div class="item">
-        <img src="spiral.png" alt="gold plated spiral bangle" onclick="openModal('spiral.png')">
+        <img src="images/spiral.png" alt="gold plated spiral bangle" onclick="openModal('spiral.png')">
         <h3>Gold-plated spiral bangle</h3>
         <p>Size: Medium</p>
         <button class="button" onclick="addToCart('Gold-plated spiral bangle',1800)">Add to Cart (ksh 1800)</button>
     </div>
     <div class="item">
-        <img src="beaded.png" alt="Beaded fringe" onclick="openModal('beaded.png')">
+        <img src="images/beaded.png" alt="Beaded fringe" onclick="openModal('beaded.png')">
         <h3>Beaded fringe bangle</h3>
         <p>Size: Large</p>
         <button class="button" onclick="addToCart('Beaded fringe bangle',6000)">Add to Cart(ksh 6000)</button>
     </div>
     <div class="item">
-       <img src="leather.png" alt="Leather wrap" onclick="openModal('leather.png')">
+       <img src="images/leather.png" alt="Leather wrap" onclick="openModal('leather.png')">
         <h3>Leather wrap bangle</h3>
         <p>Size: Small</p>
         <button class="button" onclick="addToCart('Leather wrap bangle',5400)">Add to Cart(ksh 5400)</button>
     </div>
     <div class="item">
-        <img src="pearl.png" alt="pearl studded" onclick="openModal('pearl.png')">
+        <img src="images/pearl.png" alt="pearl studded" onclick="openModal('pearl.png')">
         <h3>Pearl-studded bangle</h3>
         <p>Size: Medium</p>
         <button class="button" onclick="addToCart('Pearl-studded bangle',4500)">Add to Cart(ksh 4500)</button>
     </div>
     <div class="item">
-        <img src="chain.png" alt="chain link" onclick="openModal('chain.png')">
+        <img src="images/chain.png" alt="chain link" onclick="openModal('chain.png')">
         <h3>Chain-link bangle</h3>
         <p>Size: Large</p>
         <button class="button" onclick="addToCart('Chain-link bangle',3000)">Add to Cart(ksh 3000)</button>
     </div>
     <div class="item">
-       <img src="woodenb.png" alt="wooden bangle" onclick="openModal('woodenb.png')">
+       <img src="images/woodenb.png" alt="wooden bangle" onclick="openModal('woodenb.png')">
         <h3>Wooden bangle</h3>
         <p> Size: Small</p>
         <button class="button" onclick="addToCart('Wooden bangle',4000)">Add to Cart(ksh 4000)</button>
     </div>
     <div class="item">
-        <img src="cufflink.png" alt="cufflink inspired" onclick="openModal('cufflink.png')">
+        <img src="images/cufflink.png" alt="cufflink inspired" onclick="openModal('cufflink.png')">
         <h3>Cufflink-inspired bangle</h3>
         <p>Size: Medium</p>
         <button class="button" onclick="addToCart('Cufflink-inspired bangle',2800)">Add to Cart(ksh 2800)</button>
     </div>
     <div class="item">
-        <img src="gemstone.png" alt="gemstone enctrasted"class="rotating-image" onclick="openModal('gemstone.png')">
+        <img src="images/gemstone.png" alt="gemstone enctrasted"class="rotating-image" onclick="openModal('gemstone.png')">
         <h3>Gemstone-encrusted bangle</h3>
         <p>Size: Large</p>
         <button class="button" onclick="addToCart('Gemstone-encrusted bangle',3400)">Add to Cart(ksh 3400)</button>
@@ -89,11 +89,11 @@
     <h2>Checkout</h2>
     <form onsubmit="placeOrder(event)">
         <div class="payment-methods">
-            <img src="mpesa.png" alt="MPESA" onclick="setPaymentMethod('MPESA')" title="MPESA">
-            <img src="paypal.png" alt="PayPal" onclick="setPaymentMethod('PayPal')" title="PayPal">
-            <img src="gpay.png" alt="Google Pay" onclick="setPaymentMethod('Google Pay')" title="Google Pay">
-            <img src="bitcoin.png" alt="Bitcoin" onclick="setPaymentMethod('Bitcoin')" title="Bitcoin">
-            <img src="apple.png" alt="apple pay" onclick="setPaymentMethod('apple pay')" title="apple pay">
+            <img src="images/mpesa.png" alt="MPESA" onclick="setPaymentMethod('MPESA')" title="MPESA">
+            <img src="images/paypal.png" alt="PayPal" onclick="setPaymentMethod('PayPal')" title="PayPal">
+            <img src="images/gpay.png" alt="Google Pay" onclick="setPaymentMethod('Google Pay')" title="Google Pay">
+            <img src="images/bitcoin.png" alt="Bitcoin" onclick="setPaymentMethod('Bitcoin')" title="Bitcoin">
+            <img src="images/apple.png" alt="apple pay" onclick="setPaymentMethod('apple pay')" title="apple pay">
         </div>
         <input type="text" id="mpesaNumber" placeholder="Enter Payment Details" required>
         <button type="submit">Place Order</button>
@@ -160,11 +160,11 @@
             <div>${cartItems}</div>
             <h3>Total: Ksh${totalAmount}</h3>
             <div class="payment-methods">
-                <img src="mpesa.png" alt="MPESA" onclick="setPaymentMethod('MPESA')" title="MPESA">
-                <img src="paypal.png" alt="PayPal" onclick="setPaymentMethod('PayPal')" title="PayPal">
-                <img src="gpay.png" alt="Google Pay" onclick="setPaymentMethod('Google Pay')" title="Google Pay">
-                <img src="bitcoin.png" alt="Bitcoin" onclick="setPaymentMethod('Bitcoin')" title="Bitcoin">
-                <img src="apple.png" alt="apple pay" onclick="setPaymentMethod('apple pay')" title="apple pay">
+                <img src="images/mpesa.png" alt="MPESA" onclick="setPaymentMethod('MPESA')" title="MPESA">
+                <img src="images/paypal.png" alt="PayPal" onclick="setPaymentMethod('PayPal')" title="PayPal">
+                <img src="images/gpay.png" alt="Google Pay" onclick="setPaymentMethod('Google Pay')" title="Google Pay">
+                <img src="images/bitcoin.png" alt="Bitcoin" onclick="setPaymentMethod('Bitcoin')" title="Bitcoin">
+                <img src="images/apple.png" alt="apple pay" onclick="setPaymentMethod('apple pay')" title="apple pay">
             </div>
             <input type="text" id="mpesaNumber" placeholder="Enter Payment Details" required>
             <button onclick="placeOrder(event)">Place Order</button>
