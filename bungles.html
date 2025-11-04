@@ -10,6 +10,10 @@
 
 <header>
     <h1>Luminous</h1>
+    <div class="cart" onclick="viewCart()">
+        <span class="cart-icon">🛒</span>
+        <span id="cartCount" class="cart-count">0</span>
+    </div>
 
 </header>
 
@@ -18,55 +22,55 @@
         <input type="text" id="search" placeholder="Search for Bangles..." onkeyup="searchProducts()">
     <div class="grid">
         <div class="item">
-        <img src="silvercuff.png" alt="silvercuff" class="rotating-image" onclick="openModal('silvercuff.png')">
+        <img src="silvercuff.png" alt="silvercuff"  onclick="openModal('silvercuff.png')">
         <h3>Silver cuff bangle</h3>
         <p>Size: Medium</p>
         <button class="button" onclick="addToCart('Silver cuff bangle',2000)">Add to Cart(ksh 2000)</button>
     </div>
     <div class="item">
-        <img src="stonebangle.png" alt="stonebangle"class="rotating-image" onclick="openModal('stonebangle.png')">
+        <img src="stonebangle.png" alt="stonebangle" onclick="openModal('stonebangle.png')">
         <h3>Turquoise stone bangle</h3>
         <p> Size: Large</p>
         <button class="button" onclick="addToCart('Turquoise stone bangle',3500)">Add to Cart (ksh 3500)</button>
     </div>
     <div class="item">
-        <img src="spiral.png" alt="gold plated spiral bangle"class="rotating-image" onclick="openModal('spiral.png')">
+        <img src="spiral.png" alt="gold plated spiral bangle" onclick="openModal('spiral.png')">
         <h3>Gold-plated spiral bangle</h3>
         <p>Size: Medium</p>
         <button class="button" onclick="addToCart('Gold-plated spiral bangle',1800)">Add to Cart (ksh 1800)</button>
     </div>
     <div class="item">
-        <img src="beaded.png" alt="Beaded fringe"class="rotating-image" onclick="openModal('beaded.png')">
+        <img src="beaded.png" alt="Beaded fringe" onclick="openModal('beaded.png')">
         <h3>Beaded fringe bangle</h3>
         <p>Size: Large</p>
         <button class="button" onclick="addToCart('Beaded fringe bangle',6000)">Add to Cart(ksh 6000)</button>
     </div>
     <div class="item">
-       <img src="leather.png" alt="Leather wrap" class="rotating-image"onclick="openModal('leather.png')">
+       <img src="leather.png" alt="Leather wrap" onclick="openModal('leather.png')">
         <h3>Leather wrap bangle</h3>
         <p>Size: Small</p>
         <button class="button" onclick="addToCart('Leather wrap bangle',5400)">Add to Cart(ksh 5400)</button>
     </div>
     <div class="item">
-        <img src="pearl.png" alt="pearl studded"class="rotating-image" onclick="openModal('pearl.png')">
+        <img src="pearl.png" alt="pearl studded" onclick="openModal('pearl.png')">
         <h3>Pearl-studded bangle</h3>
         <p>Size: Medium</p>
         <button class="button" onclick="addToCart('Pearl-studded bangle',4500)">Add to Cart(ksh 4500)</button>
     </div>
     <div class="item">
-        <img src="chain.png" alt="chain link" class="rotating-image"onclick="openModal('chain.png')">
+        <img src="chain.png" alt="chain link" onclick="openModal('chain.png')">
         <h3>Chain-link bangle</h3>
         <p>Size: Large</p>
         <button class="button" onclick="addToCart('Chain-link bangle',3000)">Add to Cart(ksh 3000)</button>
     </div>
     <div class="item">
-       <img src="woodenb.png" alt="wooden bangle"class="rotating-image" onclick="openModal('woodenb.png')">
+       <img src="woodenb.png" alt="wooden bangle" onclick="openModal('woodenb.png')">
         <h3>Wooden bangle</h3>
         <p> Size: Small</p>
         <button class="button" onclick="addToCart('Wooden bangle',4000)">Add to Cart(ksh 4000)</button>
     </div>
     <div class="item">
-        <img src="cufflink.png" alt="cufflink inspired"class="rotating-image" onclick="openModal('cufflink.png')">
+        <img src="cufflink.png" alt="cufflink inspired" onclick="openModal('cufflink.png')">
         <h3>Cufflink-inspired bangle</h3>
         <p>Size: Medium</p>
         <button class="button" onclick="addToCart('Cufflink-inspired bangle',2800)">Add to Cart(ksh 2800)</button>
@@ -80,17 +84,27 @@
     </div>
     <a href="index.html" class="button">BACK</a>
 </div>
+<div id="modalOverlay"></div>
+<div id="checkoutModal">
+    <h2>Checkout</h2>
+    <form onsubmit="placeOrder(event)">
+        <div class="payment-methods">
+            <img src="mpesa.png" alt="MPESA" onclick="setPaymentMethod('MPESA')" title="MPESA">
+            <img src="paypal.png" alt="PayPal" onclick="setPaymentMethod('PayPal')" title="PayPal">
+            <img src="gpay.png" alt="Google Pay" onclick="setPaymentMethod('Google Pay')" title="Google Pay">
+            <img src="bitcoin.png" alt="Bitcoin" onclick="setPaymentMethod('Bitcoin')" title="Bitcoin">
+            <img src="apple.png" alt="apple pay" onclick="setPaymentMethod('apple pay')" title="apple pay">
+        </div>
+        <input type="text" id="mpesaNumber" placeholder="Enter Payment Details" required>
+        <button type="submit">Place Order</button>
+    </form>
+    <button onclick="closeModal()">Close</button>
+</div>
 
 <footer>
     <p>&copy; 2025 Luminous. All Rights Reserved.</p>
 </footer>
 <script>
-    let cart = [];
-
-     function addToCart(item) {
-        alert(item + ' has been added to your cart!');
-    }
-
     function searchProducts() {
         const query = document.getElementById('search').value.toLowerCase();
         const items = document.querySelectorAll('.grid .item');
@@ -116,6 +130,83 @@
 
     function closeModal() {
         document.getElementById("imageModal").style.display = "none";
+    }
+    let cart = [];
+    let paymentMethod = '';
+
+    function addToCart(product, price) {
+        cart.push({ product, price });
+        updateCartDisplay();
+        alert(`${product} added to cart!`);
+    }
+
+    function updateCartDisplay() {
+        const cartCount = cart.length;
+        document.getElementById('cartCount').innerText = cartCount > 0 ? cartCount : '';
+    }
+
+    function viewCart() {
+        const cartItems = cart.map((item, index) => `
+            <div>
+                ${item.product} - Ksh${item.price} 
+                <button onclick="removeFromCart(${index})">Remove</button>
+            </div>
+        `).join('') || 'No items in cart.';
+        
+        const totalAmount = cart.reduce((total, item) => total + item.price, 0);
+        
+        document.getElementById('checkoutModal').innerHTML = `
+            <h2>Cart Items</h2>
+            <div>${cartItems}</div>
+            <h3>Total: Ksh${totalAmount}</h3>
+            <div class="payment-methods">
+                <img src="mpesa.png" alt="MPESA" onclick="setPaymentMethod('MPESA')" title="MPESA">
+                <img src="paypal.png" alt="PayPal" onclick="setPaymentMethod('PayPal')" title="PayPal">
+                <img src="gpay.png" alt="Google Pay" onclick="setPaymentMethod('Google Pay')" title="Google Pay">
+                <img src="bitcoin.png" alt="Bitcoin" onclick="setPaymentMethod('Bitcoin')" title="Bitcoin">
+                <img src="apple.png" alt="apple pay" onclick="setPaymentMethod('apple pay')" title="apple pay">
+            </div>
+            <input type="text" id="mpesaNumber" placeholder="Enter Payment Details" required>
+            <button onclick="placeOrder(event)">Place Order</button>
+            <button onclick="closeModal()">Close</button>
+        `;
+        checkout();
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1); // Remove the item from the cart
+        updateCartDisplay(); // Update the cart display
+        viewCart(); // Refresh the cart view
+    }
+
+    function setPaymentMethod(method) {
+        paymentMethod = method;
+        document.getElementById('mpesaNumber').placeholder = `Enter ${method} Details`;
+    }
+
+    function checkout() {
+        document.getElementById('modalOverlay').style.display = 'block';
+        document.getElementById('checkoutModal').style.display = 'block';
+    }
+
+    function placeOrder(event) {
+        event.preventDefault();
+        const paymentDetails = document.getElementById('mpesaNumber').value;
+        const targetNumber = '0704215210'; // Target MPESA number
+        document.getElementById('checkoutModal').innerHTML = `
+            <h2>Payment Information</h2>
+            <p>Payment Method: ${paymentMethod}</p>
+            <p>Please make payment of the total amount to MPESA number: ${targetNumber}</p>
+            <p>From your details: ${paymentDetails}</p>
+            <button onclick="closeModal()">Close</button>
+        `;
+        cart = []; // Clear the cart after placing the order
+        updateCartDisplay(); // Reset the cart display to zero
+    }
+
+    function closeModal() {
+        document.getElementById('modalOverlay').style.display = 'none';
+        document.getElementById('checkoutModal').style.display = 'none';
     }
 </script>
 
